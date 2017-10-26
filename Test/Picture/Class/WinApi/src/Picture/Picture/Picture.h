@@ -15,11 +15,17 @@ class CPicture : public CCustomControl {
 	public:
 
 		// publicメンバ変数
-		int m_nID;	// リソースID
+		int m_nID;	// リソースID m_nID
+		HBITMAP m_hBitmap;	// ビットマップハンドルm_hBitmap
+		tstring m_tstrImageName;	// イメージ名m_tstrImageName
 
 		// publicメンバ関数
 		// コンストラクタ・デストラクタ
 		CPicture(HWND hParent, UINT nID);	// コンストラクタCPicture(HWND hParent, UINT nID)
+		virtual ~CPicture();	// デストラクタ~CPicture()
+		// メンバ関数
 		HWND Load(HWND hParent, UINT nID);	// リソースのロード関数Load
+		BOOL LoadImage(HINSTANCE hInstance, LPCTSTR lpctszImageName);	// 画像をロードする関数LoadImage
+		void SetImage();	// 画像をセット(表示)する関数SetImage
 
 };

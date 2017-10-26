@@ -77,7 +77,6 @@ int CMainDialog::OnClickedButton1(WPARAM wParam, LPARAM lParam) {
 
 	// 変数の宣言.
 	HINSTANCE hInstance;	// アプリケーションインスタンスハンドルhInstance.
-	HBITMAP hBitmap;	// ビットマップハンドルhBitmap.
 
 	// インスタンスハンドルの取得.
 	hInstance = (HINSTANCE)GetWindowLong(m_hWnd, GWLP_HINSTANCE);	// GetWindowLongでインスタンスハンドルを取得.
@@ -86,15 +85,8 @@ int CMainDialog::OnClickedButton1(WPARAM wParam, LPARAM lParam) {
 	m_pEdit->GetText();	// m_pEdit->GetTextでエディットコントロールからテキストを取得.(m_pEdit->m_tstrTextに格納されている.)
 	
 	// 画像のロード.
-	hBitmap = (HBITMAP)LoadImage(hInstance, m_pEdit->m_tstrText.c_str(), IMAGE_BITMAP, 320, 240, LR_LOADFROMFILE);	// LoadImageで画像をロード.
-	if (hBitmap != NULL) {	// hBitmapがNULLでなければ.
-
-		// 画像の表示.
-		SendMessage(m_pPicture->m_hWnd, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hBitmap);	// SendMessageでSTM_SETIMAGEを送信することで画像を表示.
-
-		// ビットマップの破棄.
-		DeleteObject(hBitmap);	// DeleteObjectでビットマップを破棄.
-
+	if (m_pPicture->LoadImage(hInstance, m_pEdit->m_tstrText.c_str())) {// m_pPicture->LoadImageで画像をロード.
+		m_pPicture->SetImage();	// m_pPicture->SetImageで画像をセット.
 	}
 
 	// 処理したので0を返す.
