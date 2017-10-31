@@ -7,8 +7,8 @@ android {
         applicationId "com.bgstation0.android.application.aoia"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 0
+        versionName "0.0.0(develop/Osaki/#0)"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
